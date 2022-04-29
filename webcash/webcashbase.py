@@ -77,12 +77,12 @@ def amount_to_str(amount):
             amount_str = f'{amount:0.8f}' # force 8 decimals
             return re.sub(r'\.?0+$', '', amount_str) # trim any trailing zeros
 
-def deserialize_amount(amount: str):
+def deserialize_amount(amount_str: str):
     """
     Take an amount in string format and convert it into a decimal object.
     """
-    if amount != None and amount != "?":
-        amount = decimal.Decimal(amount)
+    if amount_str != None and amount_str != "?":
+        amount = decimal.Decimal(amount_str)
         if amount == 0:
             raise AmountException("Amount can't be 0.")
         else:
